@@ -49,20 +49,27 @@ namespace Bogoraz.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ID,FirstName,LastName,Address,City,State,Zip,HomePhone,CellPhone,DOB,SSN,DDLID,DDLIDState,DocumentName,ApplicationtDate")] Application application)
+        public async Task<ActionResult> Create([Bind(Include = "FirstName,LastName,Address,City,State,Zip,HomePhone,CellPhone,DOB,SSN,DDLID,DDLIDState,DocumentName,ApplicationtDate")] Application application)
         {
-            if (ModelState.IsValid)
+            try
             {
-                //save signature image
-                String appPath = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;
-                ImageConverter imageConverter = new ImageConverter();
-                string signatureName = imageConverter.SaveByteArrayAsImage(appPath + "\\Signatures", application.DocumentName);
+                if (ModelState.IsValid)
+                {
+                    //save signature image
+                    String appPath = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;
+                    ImageConverter imageConverter = new ImageConverter();
+                    string signatureName = imageConverter.SaveByteArrayAsImage(appPath + "\\Signatures", application.DocumentName);
 
 
-                application.DocumentName = signatureName;
-                db.Applications.Add(application);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                    application.DocumentName = signatureName;
+                    db.Applications.Add(application);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (DataException)
+            {
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
 
             return View(application);
