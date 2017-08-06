@@ -88,12 +88,15 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Utils\SignatureTest.cs" />
+    <Compile Include="Utils\PdfprocessorTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Docs\BLGLegal Intake Form.pdf" />
+    <None Include="Docs\BLGLegal Intake Form AcroForm.pdf" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -101,6 +104,9 @@
       <Project>{11CA5775-013D-46A0-B76F-F1682106BD83}</Project>
       <Name>Bogoraz</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Docs\Signatures\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
