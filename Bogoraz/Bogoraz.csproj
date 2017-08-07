@@ -200,6 +200,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Docs\BLGLegal Intake Form.pdf" />
+    <Content Include="Docs\BLGLegal Intake Form AcroForm.pdf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\flashcanvas.js" />
     <Content Include="Scripts\flashcanvas.swf" />

@@ -22,6 +22,6 @@ namespace Bogoraz.Utils
                 pdfReader.Close();
             }
         }
-        
+
     }
 }

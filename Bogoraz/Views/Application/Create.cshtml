@@ -202,8 +202,6 @@
 
             $.subscribe(pubsubprefix + 'image/png;base64', function (data) {
                 var i = new Image();
-                i.height = 72;
-                i.width = 284;
                 i.src = 'data:' + data[0] + ',' + data[1];
                 console.log('data:' + data[0] + ',' + data[1]);
                 var imageData = 'data:' + data[0] + ',' + data[1];
